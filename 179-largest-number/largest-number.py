@@ -1,16 +1,19 @@
+from functools import cmp_to_key
+
 class Solution:
     def largestNumber(self, nums: List[int]) -> str:
-        # Convert integers to strings
         array = list(map(str, nums))
-        
-        # Custom sorting with a lambda function
-        array.sort(key=lambda x: x*10, reverse=True)
-        
-        # Handle the case where the largest number is "0"
+
+        def compare(a, b):
+            if a + b > b + a:
+                return -1
+            elif a + b < b + a:
+                return 1
+            return 0
+
+        array.sort(key=cmp_to_key(compare))
+
         if array[0] == "0":
             return "0"
-        
-        # Build the largest number from the sorted array
-        largest = ''.join(array)
-        
-        return largest
+
+        return ''.join(array)
