@@ -1,5 +1,5 @@
 class Solution:
-    def containsDuplicate(self, nums: List[int]) -> bool:
+    def containsDuplicate(self, nums: list[int]) -> bool:
         seen_numbers = set()
 
         for num in nums:
@@ -8,4 +8,3 @@ class Solution:
 
             seen_numbers.add(num)
         return False
-        
